@@ -1,0 +1,60 @@
+﻿@page
+@model Mags.Pages.Stocuri.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Stoc</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Stoc.ID" />
+            <div class="form-group">
+                <label asp-for="Stoc.Furnizor" class="control-label"></label>
+                <input asp-for="Stoc.Furnizor" class="form-control" />
+                <span asp-validation-for="Stoc.Furnizor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stoc.Produs" class="control-label"></label>
+                <input asp-for="Stoc.Produs" class="form-control" />
+                <span asp-validation-for="Stoc.Produs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stoc.SSCC" class="control-label"></label>
+                <input asp-for="Stoc.SSCC" class="form-control" />
+                <span asp-validation-for="Stoc.SSCC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stoc.Cantitate" class="control-label"></label>
+                <input asp-for="Stoc.Cantitate" class="form-control" />
+                <span asp-validation-for="Stoc.Cantitate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stoc.Adresa" class="control-label"></label>
+                <input asp-for="Stoc.Adresa" class="form-control" />
+                <span asp-validation-for="Stoc.Adresa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stoc.Client" class="control-label"></label>
+                <input asp-for="Stoc.Client" class="form-control" />
+                <span asp-validation-for="Stoc.Client" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Înapoi</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

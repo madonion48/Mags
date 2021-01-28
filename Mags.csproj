@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Comanda.cs" />
+    <Compile Remove="Migrations\20210127181215_Stoc.cs" />
+    <Compile Remove="Migrations\20210127181215_Stoc.Designer.cs" />
+    <Compile Remove="Migrations\20210127193013_Comenzi.cs" />
+    <Compile Remove="Migrations\20210127193013_Comenzi.Designer.cs" />
+    <Compile Remove="Migrations\20210127193825_Receptie.cs" />
+    <Compile Remove="Migrations\20210127193825_Receptie.Designer.cs" />
+    <Compile Remove="Migrations\20210127214637_Receptie.cs" />
+    <Compile Remove="Migrations\20210127214637_Receptie.Designer.cs" />
+    <Compile Remove="Migrations\20210127215621_Produs.cs" />
+    <Compile Remove="Migrations\20210127215621_Produs.Designer.cs" />
+    <Compile Remove="Migrations\20210127215725_Comanda.cs" />
+    <Compile Remove="Migrations\20210127215725_Comanda.Designer.cs" />
+    <Compile Remove="Migrations\20210127215746_Receptie.cs" />
+    <Compile Remove="Migrations\20210127215746_Receptie.Designer.cs" />
+    <Compile Remove="Migrations\20210127220745_Ean.cs" />
+    <Compile Remove="Migrations\20210127220745_Ean.Designer.cs" />
+    <Compile Remove="Migrations\20210128153325_Receptie.cs" />
+    <Compile Remove="Migrations\20210128153325_Receptie.Designer.cs" />
+    <Compile Remove="Migrations\20210128153804_Produs.cs" />
+    <Compile Remove="Migrations\20210128153804_Produs.Designer.cs" />
+    <Compile Remove="Migrations\20210128153859_Receptie.cs" />
+    <Compile Remove="Migrations\20210128153859_Receptie.Designer.cs" />
+    <Compile Remove="Migrations\20210128153925_Comanda.cs" />
+    <Compile Remove="Migrations\20210128153925_Comanda.Designer.cs" />
+    <Compile Remove="Migrations\20210128153934_Stoc.cs" />
+    <Compile Remove="Migrations\20210128153934_Stoc.Designer.cs" />
+    <Compile Remove="Migrations\20210128154633_Produs.cs" />
+    <Compile Remove="Migrations\20210128154633_Produs.Designer.cs" />
+    <Compile Remove="Pages\Index.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+</Project>

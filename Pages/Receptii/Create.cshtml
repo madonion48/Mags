@@ -1,0 +1,48 @@
+﻿@page
+@model Mags.Pages.Receptii.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Receptie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Receptie.Furnizor" class="control-label"></label>
+                <input asp-for="Receptie.Furnizor" class="form-control" />
+                <span asp-validation-for="Receptie.Furnizor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Receptie.EAN" class="control-label"></label>
+                @Html.DropDownList("Produs", (IEnumerable<SelectListItem>)ViewData["DBProdus"])
+            </div>
+            <div class="form-group">
+                <label asp-for="Receptie.SSCC" class="control-label"></label>
+                <input asp-for="Receptie.SSCC" class="form-control" />
+                <span asp-validation-for="Receptie.SSCC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Receptie.Cantitate" class="control-label"></label>
+                <input asp-for="Receptie.Cantitate" class="form-control" />
+                <span asp-validation-for="Receptie.Cantitate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Înapoi</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

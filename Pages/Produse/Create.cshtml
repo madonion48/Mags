@@ -1,0 +1,54 @@
+﻿@page
+@model Mags.Pages.Produse.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Produs</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Produs.EAN" class="control-label"></label>
+                <input asp-for="Produs.EAN" class="form-control" />
+                <span asp-validation-for="Produs.EAN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Produs.Nume" class="control-label"></label>
+                <input asp-for="Produs.Nume" class="form-control" />
+                <span asp-validation-for="Produs.Nume" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Produs.Lungime" class="control-label"></label>
+                <input asp-for="Produs.Lungime" class="form-control" />
+                <span asp-validation-for="Produs.Lungime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Produs.Latime" class="control-label"></label>
+                <input asp-for="Produs.Latime" class="form-control" />
+                <span asp-validation-for="Produs.Latime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Produs.Inaltime" class="control-label"></label>
+                <input asp-for="Produs.Inaltime" class="form-control" />
+                <span asp-validation-for="Produs.Inaltime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Înapoi</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

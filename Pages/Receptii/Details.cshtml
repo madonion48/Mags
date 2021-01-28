@@ -1,0 +1,37 @@
+﻿@page
+@model Mags.Pages.Receptii.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Receptie</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Receptie.Furnizor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Receptie.Furnizor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Receptie.SSCC)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Receptie.SSCC)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Receptie.Cantitate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Receptie.Cantitate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Receptie.ID">Edit</a> |
+    <a asp-page="./Index">Înapoi</a>
+</div>

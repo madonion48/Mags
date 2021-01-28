@@ -1,0 +1,66 @@
+﻿@page "/"
+@model Mags.Pages.Stocuri.IndexModel
+
+@{
+    ViewData["Title"] = "STOCURI";
+}
+
+<h1>STOCURI</h1>
+
+<p>
+    <a asp-page="Create">Stochează marfă ...</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Stoc[0].Furnizor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stoc[0].Produs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stoc[0].SSCC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stoc[0].Cantitate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stoc[0].Adresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stoc[0].Client)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Stoc) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Furnizor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SSCC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantitate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,49 @@
+﻿@page
+@model Mags.Pages.Produse.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Produs</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Produs.EAN)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Produs.EAN)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Produs.Nume)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Produs.Nume)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Produs.Lungime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Produs.Lungime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Produs.Latime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Produs.Latime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Produs.Inaltime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Produs.Inaltime)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Produs.ID">Edit</a> |
+    <a asp-page="./Index">Înapoi</a>
+</div>

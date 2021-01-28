@@ -1,0 +1,43 @@
+﻿@page
+@model Mags.Pages.Comenzi.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Comanda</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Comanda.Client" class="control-label"></label>
+                <input asp-for="Comanda.Client" class="form-control" />
+                <span asp-validation-for="Comanda.Client" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comanda.EAN" class="control-label"></label>
+                @Html.DropDownList("Stoc", (IEnumerable<SelectListItem>)ViewData["DBStoc"])
+            </div>
+            <div class="form-group">
+                <label asp-for="Comanda.Cantitate" class="control-label"></label>
+                <input asp-for="Comanda.Cantitate" class="form-control" />
+                <span asp-validation-for="Comanda.Cantitate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Înapoi</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

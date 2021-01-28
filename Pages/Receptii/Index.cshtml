@@ -1,0 +1,54 @@
+﻿@page
+@model Mags.Pages.Receptii.IndexModel
+
+@{
+    ViewData["Title"] = "Recepționare";
+}
+
+<h1>RECEPȚIONARE</h1>
+
+<p>
+    <a asp-page="Create">Recepționează marfă ...</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Receptie[0].Furnizor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Receptie[0].EAN_Produs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Receptie[0].SSCC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Receptie[0].Cantitate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Receptie) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Furnizor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EAN_Produs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SSCC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantitate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
