@@ -20,8 +20,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="Receptie.EAN" class="control-label"></label>
-                @Html.DropDownList("Produs", (IEnumerable<SelectListItem>)ViewData["DBProdus"])
-            </div>
+                <select name="LP" asp-for="Receptie.EAN" class="form-control" asp-items="ViewBag.DBProdus"></select>
+</div>
             <div class="form-group">
                 <label asp-for="Receptie.SSCC" class="control-label"></label>
                 <input asp-for="Receptie.SSCC" class="form-control" />

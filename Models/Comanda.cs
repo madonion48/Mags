@@ -12,6 +12,9 @@ namespace Mags.Models
         public int ID { get; set; }
         public string Client { get; set; }
         public Produs EAN { get; set; }
+        [Display(Name = "Cantitate comandată")]
         public decimal Cantitate { get; set; }
+        [Display(Name = "Cantitate livrată")]
+        public decimal Livrata { get; set; }
     }
 }

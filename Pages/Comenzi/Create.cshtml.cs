@@ -16,6 +16,7 @@ namespace Mags.Pages.Comenzi
     {
         private readonly Mags.Data.MagsContext _context;
         public List<Stoc> ListaStoc { get; set; }
+        public List<Produs> ListaProduse { get; set; }
 
         public CreateModel(Mags.Data.MagsContext context)
         {
@@ -43,38 +44,58 @@ namespace Mags.Pages.Comenzi
                 return Page();
             }
 
-                      
+            // recuperare lista EANuri din bdd
+            var datap = (from listaproduse in _context.Produs select listaproduse).ToList();
+            ListaProduse = datap;
+
             var data = (from listastoc in _context.Stoc where listastoc.Comanda == null select listastoc).ToList();
             ListaStoc = data;
-            string stocID = Request.Form["Stoc"].ToString();
+            string stocID = Request.Form["LP"].ToString();
 
             foreach (Stoc stoc in ListaStoc)
             {
+                //identificam stocul ales
                 if (stocID.Equals(stoc.ID.ToString()))
                 {
-                    // scriem comanda
-                    Comanda.EAN = stoc.EAN;
-                    _context.Comanda.Add(Comanda);
-                    await _context.SaveChangesAsync();
+                    //recuperam produsul stocului
+                    foreach (Produs produs in ListaProduse)
+                    {
+                        if (produs.Nume.Equals(stoc.Produs))
+                        {
+                            Comanda.EAN = produs;
+                            break;
+                        }
+                    }
 
                     // modificam stocul care ramane. Daca nu ramane nicio cantitate, stergem
                     // linia
                     decimal cantitate = stoc.Cantitate - Comanda.Cantitate;
+                    decimal livrata = stoc.Cantitate;
                     if(cantitate <= 0)
                     {
+                        // s-a consumat tot paletul
                         _context.Stoc.Remove(stoc);
                         await _context.SaveChangesAsync();
+                        // setez cantitatea pt rescriere pe comanda - caz comandat>livrat
+                        cantitate = stoc.Cantitate;
                     }
                     else 
                     {
                         stoc.Cantitate = cantitate;
                         _context.Stoc.Update(stoc);
                         await _context.SaveChangesAsync();
+                        // setez cantitatea pt rescriere pe comanda - caz comandat=livrat
+                        cantitate = Comanda.Cantitate;
+                        livrata = cantitate;
                     }
+                    // scriem comanda
+                    Comanda.Livrata = livrata;
+                    _context.Comanda.Add(Comanda);
+                    await _context.SaveChangesAsync();
                     // scriem stocul comandat. Daca avem o cantitate negativa inseamna
                     // ca nu a fost suficient stocul pt cant comandata. Livram cat este
                     Stoc newStoc = new Stoc();
-                    newStoc.EAN = stoc.EAN;
+                    newStoc.EAN = Comanda.EAN;
                     newStoc.Produs = stoc.Produs;
                     newStoc.Furnizor = stoc.Furnizor;
                     newStoc.SSCC = stoc.SSCC;
@@ -82,14 +103,7 @@ namespace Mags.Pages.Comenzi
                     newStoc.Client = Comanda.Client;
                     newStoc.Receptie = stoc.Receptie;
                     newStoc.Comanda = Comanda;
-                    if(cantitate >= 0)
-                    {
-                        newStoc.Cantitate = Comanda.Cantitate;
-                    }
-                    else
-                    {
-                        newStoc.Cantitate = stoc.Cantitate;
-                    }
+                    newStoc.Cantitate = Comanda.Livrata;
                     _context.Stoc.Add(newStoc);
                     await _context.SaveChangesAsync();
                     break;

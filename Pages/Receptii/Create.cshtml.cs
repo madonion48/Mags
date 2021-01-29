@@ -23,15 +23,13 @@ namespace Mags.Pages.Receptii
 
         public IActionResult OnGet()
         {
-           
             // recuperare lista EANuri din bdd
             var data = (from listaproduse in _context.Produs select listaproduse).ToList();
             ListaProduse = data;
 
-            // creez un view pentru a alimenta dropdownlist-ul EAN 
-            var fromDatabaseEF = new SelectList(_context.Produs.ToList(), "ID", "EAN");
+            // creez un view pentru a alimenta dropdownlist-ul EAN - afisam numele 
+            var fromDatabaseEF = new SelectList(_context.Produs.ToList(), "ID", "Nume");
             ViewData["DBProdus"] = fromDatabaseEF;
-
             return Page();
         }
 
@@ -47,7 +45,7 @@ namespace Mags.Pages.Receptii
                 return Page();
             }
 
-            string EanID = Request.Form["Produs"].ToString();
+            string EanID = Request.Form["LP"].ToString();
             var data = (from listaproduse in _context.Produs select listaproduse).ToList();
             ListaProduse = data;
             Stoc objStoc = new Stoc();
@@ -74,7 +72,7 @@ namespace Mags.Pages.Receptii
             objStoc.Receptie = Receptie;
             _context.Stoc.Add(objStoc);
             await _context.SaveChangesAsync();
-
+            
             return RedirectToPage("../Stocuri/Index");
         }
     }

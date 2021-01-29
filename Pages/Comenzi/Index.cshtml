@@ -22,6 +22,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Comanda[0].Cantitate)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comanda[0].Livrata)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -32,10 +35,13 @@
                 @Html.DisplayFor(modelItem => item.Client)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EAN)
+                @Html.DisplayFor(modelItem => item.EAN.Nume)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Cantitate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Livrata)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
